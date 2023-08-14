@@ -9,6 +9,10 @@
 	<name>NAGP_DevTestOps</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
+		<properties>
+           <maven.compiler.source>16</maven.compiler.source>
+           <maven.compiler.target>16</maven.compiler.target>
+             </properties>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
