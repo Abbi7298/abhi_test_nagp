@@ -1,7 +1,7 @@
 pipeline{
     agent any
       environment {
-    notifyEmail ="alpana@nagarro.com"
+    notifyEmail ="abhishak.khajuria@nagarro.com"
   }
     triggers {
     	cron('0 06 * * *')
@@ -22,24 +22,6 @@ pipeline{
             bat "echo deployed"
             }
         }
-        stage("Publish to Artifactory"){
-            steps{
-                rtMavenDeployer(
-                    id: 'deployer',
-                    serverId: 'NAGP_DevTestOps@artifactory',
-                    releaseRepo: 'NAGP_DevTestOps',
-                    snapshotRepo: 'NAGP_DevTestOps'
-                )
-                rtMavenRun(
-                    pom: 'pom.xml',
-                    goals: 'clean install',
-                    deployerId: 'deployer'
-                    )
-                rtPublishBuildInfo(
-                    serverId: 'NAGP_DevTestOps@artifactory',
-                )
-            }
-    }
     }
     post{
         success{
